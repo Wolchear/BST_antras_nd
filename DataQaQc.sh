@@ -20,6 +20,6 @@ do
 R1=$i
 R2="../../inputs/$(basename $R1 1.fastq.gz)2.fastq.gz"
 echo "Triming for $R1 and $R2"
-trim_galore -paired $R1 $R2 --fastqc -o ../../inputs/trimmed/ --length 20 -q 20 --stringency 3 
+trim_galore -paired $R1 $R2 --fastqc -o ../../inputs/trimmed/ --length 20 -q 25 --stringency 3 
 done
 echo "All samples are trimmed"
