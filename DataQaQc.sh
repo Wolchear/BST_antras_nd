@@ -23,3 +23,8 @@ echo "Triming for $R1 and $R2"
 trim_galore -paired $R1 $R2 --fastqc -o ../../inputs/trimmed/ --length 20 -q 25 --stringency 3 
 done
 echo "All samples are trimmed"
+
+
+#3) MultiQc
+
+multiqc /home/bioinformatikai/HW2/inputs/trimmed/*_fastqc* /home/bioinformatikai/HW2/outputs/raw_data/*fastqc*

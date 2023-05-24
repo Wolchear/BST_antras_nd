@@ -1,0 +1,13 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	ERR204044_1_val_1	/home/bioinformatikai/HW2/inputs/trimmed/ERR204044_1_val_1_fastqc.zip
+FastQC	all_sections	ERR204044_2_val_2	/home/bioinformatikai/HW2/inputs/trimmed/ERR204044_2_val_2_fastqc.zip
+FastQC	all_sections	SRR15131330_1_val_1	/home/bioinformatikai/HW2/inputs/trimmed/SRR15131330_1_val_1_fastqc.zip
+FastQC	all_sections	SRR15131330_2_val_2	/home/bioinformatikai/HW2/inputs/trimmed/SRR15131330_2_val_2_fastqc.zip
+FastQC	all_sections	SRR18214264_1_val_1	/home/bioinformatikai/HW2/inputs/trimmed/SRR18214264_1_val_1_fastqc.zip
+FastQC	all_sections	SRR18214264_2_val_2	/home/bioinformatikai/HW2/inputs/trimmed/SRR18214264_2_val_2_fastqc.zip
+FastQC	all_sections	ERR204044_1	/home/bioinformatikai/HW2/outputs/raw_data/ERR204044_1_fastqc.zip
+FastQC	all_sections	ERR204044_2	/home/bioinformatikai/HW2/outputs/raw_data/ERR204044_2_fastqc.zip
+FastQC	all_sections	SRR15131330_1	/home/bioinformatikai/HW2/outputs/raw_data/SRR15131330_1_fastqc.zip
+FastQC	all_sections	SRR15131330_2	/home/bioinformatikai/HW2/outputs/raw_data/SRR15131330_2_fastqc.zip
+FastQC	all_sections	SRR18214264_1	/home/bioinformatikai/HW2/outputs/raw_data/SRR18214264_1_fastqc.zip
+FastQC	all_sections	SRR18214264_2	/home/bioinformatikai/HW2/outputs/raw_data/SRR18214264_2_fastqc.zip
