@@ -10,3 +10,5 @@ wget -P ../../inputs ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR151/030/SRR15131330/S
 #ERR204044
 wget -P ../../inputs ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR204/ERR204044/ERR204044_1.fastq.gz
 wget -P ../../inputs ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR204/ERR204044/ERR204044_2.fastq.gz
+
+
