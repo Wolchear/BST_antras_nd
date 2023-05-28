@@ -97,5 +97,3 @@ do
 R1=$i/ragtag.correct.fasta
 ragtag.py scaffold $pathRef $R1 -o $i
 done
-
-cp ragtag.scaffold15.fasta ../../../../code/BST_antras_nd/
