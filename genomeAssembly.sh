@@ -56,7 +56,8 @@ fi
 #echo "Spades for $R1 and $R2 saving in $pathMegahit/$(basename $R1 _1_val_1.fq.gz)"
 #$later/megahit -o $pathMegahit/$(basename $R1 _1_val_1.fq.gz) -1 $R1 -2 $R2
 #done
-
+#RgTag
+#Correct
 pathRagTag="../../outputs/RagTag"
 if [ ! -d $pathRagTag ]; then
 mkdir -p $pathRagTag
@@ -80,5 +81,21 @@ if [ ! -d $pathRagTag/megahit/$(basename $i) ]; then
 mkdir -p $pathRagTag/megahit/$(basename $i)
 echo "Sukurta new dir $pathRagTag/megahit/$(basename $i)"
 fi
-ragtag.py correct $pathRef $R1 -o $pathRagTag/megahit/$(basename $i)
+#ragtag.py correct $pathRef $R1 -o $pathRagTag/megahit/$(basename $i)
 done
+
+#Scaffolds
+for i in $pathRagTag/Spades/*
+do
+R1=$i/ragtag.correct.fasta
+#ragtag.py scaffold $pathRef $R1 -o $i
+done
+
+#Scaffolds
+for i in $pathRagTag/megahit/*
+do
+R1=$i/ragtag.correct.fasta
+ragtag.py scaffold $pathRef $R1 -o $i
+done
+
+cp ragtag.scaffold15.fasta ../../../../code/BST_antras_nd/
