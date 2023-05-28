@@ -66,9 +66,19 @@ fi
 for i in $pathSpades/*
 do
 R1=$i/contigs.fasta
-if [ ! -d $pathRagTag/$(basename $i) ]; then
-mkdir -p $pathRagTag/$(basename $i)
-echo "Sukurta new dir $pathRagTag/$(basename $i)"
+if [ ! -d $pathRagTag/Spades/$(basename $i) ]; then
+mkdir -p $pathRagTag/Spades/$(basename $i)
+echo "Sukurta new dir $pathRagTag/Spades/$(basename $i)"
 fi
-ragtag.py correct $pathRef $R1 -o $pathRagTag/$(basename $i)
+#ragtag.py correct $pathRef $R1 -o $pathRagTag/Spades/$(basename $i)
+done
+
+for i in $pathMegahit/*
+do
+R1=$i/final.contigs.fa
+if [ ! -d $pathRagTag/megahit/$(basename $i) ]; then
+mkdir -p $pathRagTag/megahit/$(basename $i)
+echo "Sukurta new dir $pathRagTag/megahit/$(basename $i)"
+fi
+ragtag.py correct $pathRef $R1 -o $pathRagTag/megahit/$(basename $i)
 done
