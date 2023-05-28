@@ -95,10 +95,12 @@ done
 for i in $pathRagTag/megahit/*
 do
 R1=$i/ragtag.correct.fasta
-ragtag.py scaffold $pathRef $R1 -o $i
+#ragtag.py scaffold $pathRef $R1 -o $i
 done
 
-#i=ragtag.correctS18.fasta
-#cp $i  ../../../../code/BST_antras_nd/
-#mv ragtag.correct.fasta  $i
-#mv $i ragtag.correct.fasta 
+
+
+R2=
+mv ragtag.scaffold.fasta  $R2
+cp $R2  ../../../../code/BST_antras_nd/scaffoldsAndContigs/megahit/(basename $i)
+mv $R2 ragtag.scaffold.fasta 
