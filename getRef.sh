@@ -12,3 +12,4 @@ wget -P ../../inputs ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR204/ERR204044/ERR2040
 wget -P ../../inputs ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR204/ERR204044/ERR204044_2.fastq.gz
 
 
+efetch -db nucleotide -id CP015498 -format fasta > ../../references/CP015498.fasta
