@@ -7,6 +7,10 @@ pathAbyss="../../outputs/abyssAssembly"
 pathMegahit="../../outputs/megahitAssembly"
 pathRagTag="../../outputs/RagTag"
 pathRef="../../references/CP015498.fasta"
+pathAssembly="../../outputs/asseblyToUse"
+pathOriginal="../../inputs"
+pathMap="../../outputs/map"
+pathSam="../../outputs/map/samFiles"
 if [ ! -d $pathSpades ]; then
 mkdir -p $pathSpades
 echo "Sukurta new dir $pathSpades"
@@ -91,16 +95,56 @@ R1=$i/ragtag.correct.fasta
 #ragtag.py scaffold $pathRef $R1 -o $i
 done
 
-#Scaffolds
 for i in $pathRagTag/megahit/*
 do
 R1=$i/ragtag.correct.fasta
 #ragtag.py scaffold $pathRef $R1 -o $i
 done
 
+#Mapping
+
+#Index
+for i in $pathAssembly/*
+do
+R1=$i/ragtag.scaffold.fasta
+#bwa index $R1
+done
 
 
-R2=
-mv ragtag.scaffold.fasta  $R2
-cp $R2  ../../../../code/BST_antras_nd/scaffoldsAndContigs/megahit/(basename $i)
-mv $R2 ragtag.scaffold.fasta 
+
+#Mapping
+if [ ! -d $pathMap ]; then
+mkdir -p $pathMap
+echo "Sukurta new dir $pathMap"
+fi
+
+if [ ! -d $pathSam ]; then
+mkdir -p $pathSam
+echo "Sukurta new dir $pathSam"
+fi
+
+for i in $pathOriginal/*1.fastq.gz
+do
+R1=$i
+R2="$pathOriginal/$(basename $R1 1.fastq.gz)2.fastq.gz"
+echo "$R1 $R2"
+#bwa index $pathAssembly/$(basename $R1 _1.fastq.gz)/ragtag.scaffold.fasta
+#bwa mem $pathAssembly/$(basename $R1 _1.fastq.gz)/ragtag.scaffold.fasta $R1 $R2 > $pathSam/$(basename $R1 _1.fastq.gz).sam
+done
+
+for i in $pathSam/*
+do
+echo $(basename $i)
+#samtools view -F 4 -bS $i -@ 7 | samtools sort -@ 7  -o $pathSam/$(basename $i .sam)_sorted.bam
+done
+
+for i in $pathSam/*.bam
+do
+echo $i
+#samtools index -b $i
+samtools flagstat $i
+done
+
+i="../../../HW2/outputs/RagTag/megahit/ERR204044/ragtag.scaffold.fasta"
+i2="../../../HW2/outputs/RagTag/Spades/ERR204044/ragtag.scaffold.fasta"
+java -cp Gepard-1.40.jar org.gepard.client.cmdline.CommandLine -seq1 $i -seq2 $i2 -matrix ../resources/matrices/blosum62.mat -outfile output.png 
