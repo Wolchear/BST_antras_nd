@@ -146,5 +146,6 @@ samtools flagstat $i
 done
 
 i="../../../HW2/outputs/RagTag/megahit/ERR204044/ragtag.scaffold.fasta"
-i2="../../../HW2/outputs/RagTag/Spades/SRR15131330/ragtag.scaffold.fasta"
+i2="../../../HW2/outputs/RagTag/megahit/SRR18214264/ragtag.scaffold.fasta"
 java -cp Gepard-1.40.jar org.gepard.client.cmdline.CommandLine -seq1 $i -seq2 $i2 -matrix ../resources/matrices/edna.mat -outfile output.png 
+cp output3.png ../../../HW2/code/BST_antras_nd/
