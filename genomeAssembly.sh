@@ -123,29 +123,32 @@ mkdir -p $pathSam
 echo "Sukurta new dir $pathSam"
 fi
 
-for i in $pathOriginal/*1.fastq.gz
-do
-R1=$i
-R2="$pathOriginal/$(basename $R1 1.fastq.gz)2.fastq.gz"
-echo "$R1 $R2"
+#for i in $pathOriginal/*1.fastq.gz
+#do
+#R1=$i
+#R2="$pathOriginal/$(basename $R1 1.fastq.gz)2.fastq.gz"
+#echo "$R1 $R2"
 #bwa index $pathAssembly/$(basename $R1 _1.fastq.gz)/ragtag.scaffold.fasta
 #bwa mem $pathAssembly/$(basename $R1 _1.fastq.gz)/ragtag.scaffold.fasta $R1 $R2 > $pathSam/$(basename $R1 _1.fastq.gz).sam
-done
+#done
 
-for i in $pathSam/*
-do
-echo $(basename $i)
+#for i in $pathSam/*
+#do
+#echo $(basename $i)
 #samtools view -F 4 -bS $i -@ 7 | samtools sort -@ 7  -o $pathSam/$(basename $i .sam)_sorted.bam
-done
+#done
 
-for i in $pathSam/*.bam
-do
-echo $i
+#for i in $pathSam/*.bam
+#do
+#echo $i
 #samtools index -b $i
-samtools flagstat $i
-done
+#samtools flagstat $i
+#done
 
-i="../../../HW2/outputs/RagTag/megahit/ERR204044/ragtag.scaffold.fasta"
-i2="../../../HW2/outputs/RagTag/megahit/SRR18214264/ragtag.scaffold.fasta"
-java -cp Gepard-1.40.jar org.gepard.client.cmdline.CommandLine -seq1 $i -seq2 $i2 -matrix ../resources/matrices/edna.mat -outfile output.png 
-cp output3.png ../../../HW2/code/BST_antras_nd/
+pathGepard="../../../Executable/gepard"
+for i in $pathRagTag/megahit/*
+do
+R1=$i/ragtag.correct.fasta
+R2=$pathRagTag/Spades/$(basename $i)/ragtag.correct.fasta
+java -cp $pathGepard/dist/Gepard-1.40.jar org.gepard.client.cmdline.CommandLine -seq1 $R1 -seq2 $R2 -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $i).png 
+done
