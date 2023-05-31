@@ -1,16 +1,17 @@
 #!/bin/sh
 pathGepard="../../../Executable/gepard"
 pathRagTag="../../outputs/RagTag"
-pathDB="../../references/db"
+pathRef="../../references/CP015498.fasta"
+pathAssembly="../../outputs/asseblyToUse"
 #GEPARD
 
 genomeERR="$pathRagTag/megahit/ERR204044"
 genomeSRR15="$pathRagTag/megahit/SRR15131330"
 genomeSRR18="$pathRagTag/megahit/SRR18214264"
 gepard="/dist/Gepard-1.40.jar org.gepard.client.cmdline.CommandLine"
-java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR15/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR15).png
-java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR18).png
-java -cp $pathGepard/$gepard -seq1 $genomeSRR15/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeSRR15)_$(basename $genomeSRR18).png
+#java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR15/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR15).png
+#java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR18).png
+#java -cp $pathGepard/$gepard -seq1 $genomeSRR15/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeSRR15)_$(basename $genomeSRR18).png
 
 # Komentarai
 
@@ -38,5 +39,9 @@ java -cp $pathGepard/$gepard -seq1 $genomeSRR15/ragtag.scaffold.fasta -seq2 $gen
 # Pagal BUSCO plotą, galima pasakyti, kad kiekvienas genomas turi daug single-copy ortologu ~99%, 
 #taip pat yra šiektiek fragemtuotų genų ir labai mažai missed genų
 
-#makeblastdb -in CP015498.fasta -dbtype nucl -out db/CP015498_db
-#blastn -query $pathRagTag/megahit/ERR204044/ragtag.scaffold.fasta -db $pathDB/CP015498_db -out result.txt
+
+for i in $pathAssembly/*
+do
+makeblastdb -in $i/ragtag.scaffold.fasta -dbtype nucl -out $i/db/ragtag.scaffold_bd
+blastn -query $pathRef -db $i/db/ragtag.scaffold_bd -out result_$(basename $i).txt -outfmt 6
+done
