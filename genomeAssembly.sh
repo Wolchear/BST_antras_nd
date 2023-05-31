@@ -110,7 +110,12 @@ R1=$i/ragtag.scaffold.fasta
 #bwa index $R1
 done
 
+# Pairinkau megahit SRR18 ir ERR
+# Spades SRR15
 
+#SRR18 megahit pasirinkau tik dėl žymėj didesnio NG90, o šiap jie išėjo gana panašus, tik spades turėjo truput mažiau klaidų
+#ERR megahit vel gi geriau atitiko ref genomui ir spades scaffoldas turėjo labai daug contigų kurie visiškai neatitiko reference genomui
+#SRR15 spades  Nors megahit SRR15 atitikimas refui buvo truput didesnis,bet quastas atrado 1 inversija, todėl pagalvojau, kad  0 inversija > atitikimas
 
 #Mapping
 if [ ! -d $pathMap ]; then
