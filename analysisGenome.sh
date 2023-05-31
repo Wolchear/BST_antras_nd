@@ -3,6 +3,7 @@ pathGepard="../../../Executable/gepard"
 pathRagTag="../../outputs/RagTag"
 pathDB="../../references/db"
 #GEPARD
+
 genomeERR="$pathRagTag/megahit/ERR204044"
 genomeSRR15="$pathRagTag/megahit/SRR15131330"
 genomeSRR18="$pathRagTag/megahit/SRR18214264"
@@ -10,6 +11,16 @@ gepard="/dist/Gepard-1.40.jar org.gepard.client.cmdline.CommandLine"
 java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR15/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR15).png
 java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR18).png
 java -cp $pathGepard/$gepard -seq1 $genomeSRR15/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeSRR15)_$(basename $genomeSRR18).png
+#ERR204044 ir SRR15131330
+# matosi šiek tiek inserciju\delecijų, bet scaffoldu atitikimas gana geras
+#ERR204044 ir SRR18214264
+# Beveik idealus atitikimas beveik idealus
+#SRR15131330 ir SRR18214264
+# Taip pat matosi šiektiek inserciju\delecijų, truputi daugiau negu ERR204044 ir SRR15131330 palyginime
+# Ir, matosi, kad liniją yra gana kreivą gale (bent man taip rodosi), tai galima pasakyti
+# SRR15131330 ir SRR18214264 scaffoldai skyriasi daugiausiai
+
+# Taip pat reikėtų paminėti, kad gale visur yra microsalelitų, bet tai ok, skirtingi gi genomai
 
 
 #BUSCO, kodas kuri naudojau savo local linuxe
