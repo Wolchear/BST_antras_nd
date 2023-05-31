@@ -145,10 +145,3 @@ fi
 #samtools flagstat $i
 #done
 
-pathGepard="../../../Executable/gepard"
-for i in $pathRagTag/megahit/*
-do
-R1=$i/ragtag.scaffold.fasta
-R2=$pathRagTag/Spades/$(basename $i)/ragtag.scaffold.fasta
-java -cp $pathGepard/dist/Gepard-1.40.jar org.gepard.client.cmdline.CommandLine -seq1 $R1 -seq2 $R2 -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $i).png 
-done
