@@ -11,6 +11,9 @@ gepard="/dist/Gepard-1.40.jar org.gepard.client.cmdline.CommandLine"
 java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR15/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR15).png
 java -cp $pathGepard/$gepard -seq1 $genomeERR/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeERR)_$(basename $genomeSRR18).png
 java -cp $pathGepard/$gepard -seq1 $genomeSRR15/ragtag.scaffold.fasta -seq2 $genomeSRR18/ragtag.scaffold.fasta -matrix $pathGepard/resources/matrices/edna.mat -outfile output_$(basename $genomeSRR15)_$(basename $genomeSRR18).png
+
+# Komentarai
+
 #ERR204044 ir SRR15131330
 # matosi šiek tiek inserciju\delecijų, bet scaffoldu atitikimas gana geras
 #ERR204044 ir SRR18214264
@@ -29,6 +32,8 @@ java -cp $pathGepard/$gepard -seq1 $genomeSRR15/ragtag.scaffold.fasta -seq2 $gen
 # busco -i ../ragtag.scaffold.fasta -l /home/wolchear/Desktop/lactobacillales_odb10 -m genome -o ERR -f
 #komanda sudaryti grafika
 #python3 generate_plot.py -wd ../../scaffolds/
+
+# Komentarai
 
 # Pagal BUSCO plotą, galima pasakyti, kad kiekvienas genomas turi daug single-copy ortologu ~99%, 
 #taip pat yra šiektiek fragemtuotų genų ir labai mažai missed genų

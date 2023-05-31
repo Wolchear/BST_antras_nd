@@ -9,7 +9,7 @@ threads=6
 #fi
 #fastqc -t $threads ../../inputs/* -o ../../outputs/raw_data/
 
-#Komentarai
+# Komentarai
 # ERR204044
 # Vienintelė problema buvo su `Per tile sequence quality`
 # Kaip supratau problema gali atsirasti
@@ -47,8 +47,19 @@ trim_galore -paired $R1 $R2 --fastqc -o ../../inputs/trimmed/ --length 20 -q 30 
 done
 echo "All samples are trimmed"
 
+# Komentarai
+
 # ERR204044
-#
+# Apkirpo nekokibiškus readus, bet tai niekaip negalėjo paveikti `Per tile sequence quality`,
+# tai viskas liko beveik kaip buvo
+
+#SRR15131330
+# Apkirpo nekokibiškus readus, bet duplikacijų skičius nepakito, tai, kaip ir sakiau, tikriausiai
+# tai yra šios sekos specifika
+
+#SRR18214264
+# Padidėjo skaičius readų, kurie yra < 150-152, tai pirmą kartą susiduriau su tokiu fatqc atveju,
+# tai, vis gi galvojų, kad galėjo būti kažkokią klaidą sekvinavimo metų
 
 #3) MultiQc
 

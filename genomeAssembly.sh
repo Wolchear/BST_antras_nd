@@ -28,20 +28,7 @@ fi
 #/usr/lib/spades/bin/spades.py -o $pathSpades/$(basename $R1 _1_val_1.fq.gz) -1 $R1 -2 $R2
 #done
 
-#Abyss
-
-#if [ ! -d $pathAbyss ]; then
-#mkdir -p $pathAbyss
-#echo "Sukurta new dir $pathAbyss"
-#fi
-
-#for kc in 2 3; do
-#	for k in `seq 50 8 90`; do
-#		mkdir k${k}-kc${kc}
-#		abyss-pe name=ERR204044 B=2G k=$k kc=$kc in=../../ERR204044_1_val_1.fq -C k${k}-kc${kc}
-#	done
-#done
-#abyss-fac k*/ERR204044-scaffolds.fa
+# Megahit
 
 #if [ ! -d $pathMegahit ]; then
 #mkdir -p $pathMegahit
@@ -60,6 +47,10 @@ fi
 #echo "Spades for $R1 and $R2 saving in $pathMegahit/$(basename $R1 _1_val_1.fq.gz)"
 #$later/megahit -o $pathMegahit/$(basename $R1 _1_val_1.fq.gz) -1 $R1 -2 $R2
 #done
+
+# Komentarai
+# Na, pagal quast, spades daro truput mažiau klaidų, o megahit contigai daugiau atititnka ref genomui
+
 #RgTag
 #Correct
 pathRagTag="../../outputs/RagTag"
@@ -110,6 +101,7 @@ R1=$i/ragtag.scaffold.fasta
 #bwa index $R1
 done
 
+# Komentarai
 # Pairinkau megahit SRR18 ir ERR
 # Spades SRR15
 
