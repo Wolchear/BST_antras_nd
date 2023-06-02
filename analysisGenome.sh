@@ -42,6 +42,24 @@ gepard="/dist/Gepard-1.40.jar org.gepard.client.cmdline.CommandLine"
 
 for i in $pathAssembly/*
 do
-makeblastdb -in $i/ragtag.scaffold.fasta -dbtype nucl -out $i/db/ragtag.scaffold_bd
-blastn -query $pathRef -db $i/db/ragtag.scaffold_bd -out result_$(basename $i).txt -outfmt 6
+#makeblastdb -in $i/ragtag.scaffold.fasta -dbtype nucl -out $i/db/ragtag.scaffold_bd
+blastn -query $pathRef -db $i/db/ragtag.scaffold_bd -out result_$(basename $i).txt -evalue 1.e-115 -outfmt 6
+wc -l result_$(basename $i).txt
 done
+
+# gene_markS
+# genų skaičius
+# (grep -c "native") + (grep -c "atypical") - 1 == lastGeneId
+# ERR: 2295
+# SRR15: 2568
+# SRR18: 2310
+# Rast 
+# (wc -l) - 1
+# ERR: 2579
+# SRR15: 2912
+# SRR18: 2597
+# BLASTn
+# (wc -l) - 1
+# ERR: 2394
+# SRR15: 1863
+# SRR18: 3065
